@@ -5,7 +5,7 @@ import com.TestMyBank.pageObjects.NewCustomer;
 import org.openqa.selenium.Alert;
 import org.testng.annotations.Test;
 
-public class TC_DeleteCustomer_003 extends BaseClass{
+public class TC_DeleteCustomer_003 extends BaseClass {
 
     @Test
     public void deleteCustomer() throws InterruptedException {
@@ -13,19 +13,17 @@ public class TC_DeleteCustomer_003 extends BaseClass{
         DeleteCustomer dc = new DeleteCustomer(driver);
         String custId = nc.getCustomerID();
         System.out.println(custId);
-        //Thread.sleep(3000);
 
         dc.clickDeleteCustomer();
-        Thread.sleep(3000);
+        logger.info("You are on Delete Customer Page");
         dc.setInputCustId(custId);
-       Thread.sleep(3000);
+        Thread.sleep(5000);
+        logger.info("Entered the customer id");
         dc.deleteId();
-        Thread.sleep(3000);
+        logger.info("Customer deleted");
 
         Alert alert = driver.switchTo().alert();
         alert.accept();
-
-        Thread.sleep(5000);
 
     }
 

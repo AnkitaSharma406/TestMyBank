@@ -3,10 +3,13 @@ package com.TestMyBank.testCases;
 import com.TestMyBank.pageObjects.LoginPage;
 import com.TestMyBank.pageObjects.NewCustomer;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC_NewCustomer_002 extends BaseClass{
+import java.time.Duration;
+
+public class TC_NewCustomer_002 extends BaseClass {
 
     @Test
     public void addCustomer() throws InterruptedException {
@@ -21,7 +24,6 @@ public class TC_NewCustomer_002 extends BaseClass{
 
         lp.clickSubmit();
         logger.info("Clicked on button");
-
 
 
         String name = "John" + RandomStringUtils.randomAlphabetic(3);      // e.g. JohnXyz
@@ -40,27 +42,23 @@ public class TC_NewCustomer_002 extends BaseClass{
         nc.setGender(); // If you want to make it dynamic, pass gender and use if-else
         nc.setDateOfBirth(dob); // Update method to accept String instead of long
         nc.setAddress(address);
-        Thread.sleep(3000);
         nc.setCity(city);
         nc.setState(state);
-        Thread.sleep(3000);
         nc.setPin(pin);
+        Thread.sleep(5000);
         nc.setContactNo(contact);
-        Thread.sleep(3000);
         nc.setEmailId(email);
         nc.setPassword(password);
-        nc.clickSubmitBtn();
         Thread.sleep(5000);
+        nc.clickSubmitBtn();
 
-        if(driver.getPageSource().contains("Customer Registered Successfully!!!")){
+        if (driver.getPageSource().contains("Customer Registered Successfully!!!")) {
             Assert.assertTrue(true);
-        }
-        else{
+        } else {
             Assert.assertTrue(false);
         }
 
     }
-
 
 
 }
